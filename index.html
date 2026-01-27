@@ -1,293 +1,172 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>JOKI BLOX FRUIT Xzyo STORE</title>
-  <style>
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Joki</title>
 
-    body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: #f0f0f0;
-      padding: 20px;
-    }
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#020617;
+  color:white;
+}
 
-    .box { 
-      max-width: 800px; 
-      margin: auto; 
-      background: rgba(0,0,0,0.85); 
-      padding: 25px; 
-      border-radius: 20px; 
-      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
 
-    h2, h3 { 
-      text-align: center; 
-      color: #00e5ff;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-      margin-bottom: 5px;
-    }
+/* DESKTOP LAYOUT */
+.wrapper{
+  display:flex;
+  gap:20px;
+}
 
-    .join-btn {
-      display: block;
-      margin: 10px auto 20px auto;
-      padding: 12px;
-      width: 100%;
-      max-width: 400px;
-      background: linear-gradient(90deg, #ffcc00, #ff9900);
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-      text-align: center;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-    .join-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    }
+@media(max-width:768px){
+  .wrapper{
+    flex-direction:column;
+  }
+}
 
-    label { 
-      display: block; 
-      margin-top: 12px; 
-      font-weight: bold;
-      color: #a0e7ff;
-    }
-    input, textarea { 
-      width: 100%; 
-      padding: 12px; 
-      border-radius: 10px; 
-      border: none; 
-      margin-top: 5px; 
-      background: rgba(255,255,255,0.1);
-      color: #f0f0f0;
-    }
-    input::placeholder, textarea::placeholder {
-      color: #cceeff;
-    }
+.list{
+  width:30%;
+  background:#020617;
+  border:1px solid #2563eb;
+  border-radius:12px;
+  padding:15px;
+}
 
-    .list { 
-      background: rgba(0,0,0,0.7); 
-      border: 1px solid rgba(255,255,255,0.2); 
-      padding: 20px; 
-      margin-top: 20px; 
-      font-size: 14px; 
-      line-height: 1.6; 
-      border-radius: 15px;
-    }
-    .category {
-      font-weight: bold;
-      font-size: 15px;
-      margin-top: 15px;
-      color: #00ffff;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-    }
-    .item {
-      margin-left: 10px;
-      margin-top: 3px;
-    }
+.list h3{
+  text-align:center;
+}
 
-    /* BUTTON & PAYMENT STYLE */
-    .btn, .payment-bar {
-      margin-top: 15px; 
-      width: 100%;  
-      padding: 14px; 
-      border: none; 
-      border-radius: 10px; 
-      font-size: 16px; 
-      cursor: pointer; 
-      font-weight: bold; 
-      transition: 0.3s;
-      text-align: center; 
-      display: block;
-      color: #fff;
-      background: linear-gradient(-45deg, #1e3c72, #2a5298, #000000);
-      background-size: 400% 400%;
-      animation: gradientMove 6s ease infinite;
-      text-decoration: none;
-    }
+.form{
+  width:70%;
+  background:#020617;
+  border:1px solid #2563eb;
+  border-radius:12px;
+  padding:20px;
+}
 
-    .btn:hover, .payment-bar:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    }
+/* BUTTON STYLE */
+.btn{
+  width:100%;
+  padding:14px;
+  margin-top:12px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+  text-align:center;
+  background:linear-gradient(135deg,#2563eb,#020617);
+  color:#fff;
+  box-shadow:0 0 15px rgba(37,99,235,.5);
+  transition:.3s;
+}
 
-    /* MODAL KONFIRMASI */
-    #modal {
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background: rgba(0,0,0,0.8);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      z-index:100;
-      display:none;
-    }
-    .modal-content {
-      background:#0f172a;
-      color:#fff;
-      padding:30px;
-      border-radius:20px;
-      text-align:center;
-      font-size:20px;
-      animation: slideIn 0.5s ease-out;
-    }
-    .checkmark {
-      font-size:50px;
-      color:#00ff88;
-      animation: pop 0.5s ease;
-      margin-bottom:15px;
-    }
+.btn:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 25px rgba(37,99,235,.9);
+}
 
-    @keyframes slideIn {
-      0% {transform: translateY(100px); opacity:0;}
-      100% {transform: translateY(0); opacity:1;}
-    }
-    @keyframes pop {
-      0% {transform: scale(0);}
-      60% {transform: scale(1.2);}
-      100% {transform: scale(1);}
-    }
-  </style>
+/* INPUT */
+input,select{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:8px;
+  border:none;
+}
+
+/* SUCCESS SLIDE */
+#success{
+  display:none;
+  text-align:center;
+  margin-top:50px;
+}
+
+.check{
+  font-size:80px;
+  color:#22c55e;
+  animation:pop .5s ease;
+}
+
+@keyframes pop{
+  0%{transform:scale(0)}
+  100%{transform:scale(1)}
+}
+</style>
 </head>
+
 <body>
+<div class="container">
 
-<div class="box">
-  <h2>JOKI BLOX FRUIT Xzyo STORE</h2>
-  <h3>MURAH AMAN DAN TERPERCAYA</h3>
+<div class="wrapper" id="orderPage">
 
-  <!-- TOMBOL JOIN SALURAN -->
-  <a class="join-btn" href="https://whatsapp.com/channel/0029VbCFZEm5kg7DZoIDgG3r" target="_blank">
-    Join saluran dulu boy
-  </a>
-
-  <!-- FORM KIRIM DATA + BUKTI TRANSFER -->
-  <form id="orderForm" enctype="multipart/form-data">
-    <label>Username</label>
-    <input type="text" name="username" placeholder="Masukkan username" required>
-
-    <label>Sandi</label>
-    <input type="password" name="sandi" placeholder="Masukkan sandi akun" required>
-
-    <label>JENIS JOKI</label>
-    <textarea name="catatan" rows="3" placeholder="Mau joki apa boy?"></textarea>
-
-    <label>Masukin Bukti TF ke sini boy</label>
-    <input type="file" name="bukti_transfer" accept="image/*" required>
-
-    <div class="payment-bar">DANA / OVO / GOPAY : 089517154561</div>
-
-    <button class="btn" type="submit">ORDER</button>
-  </form>
-
-  <!-- TOMBOL QRIS KE WHATSAPP -->
-  <a class="payment-bar" href="https://wa.me/6289692310378?text=Halo%20Admin,%20saya%20ingin%20minta%20QRIS%20untuk%20pembayaran%20joki." target="_blank">
-     📲 Minta QRIS ke Admin
-  </a>
-
-  <!-- LIST JOKI PREMIUM -->
-  <div class="list">
-<div class="category">🏴‍☠️ JOKI BOUNTY / HONOR</div>
-<div class="item">1M : 25.000</div>
-<div class="item">5M : 100.000</div>
-<div class="item">10M : 230.000</div>
-<div class="item">15M : 340.000</div>
-<div class="item">20M : 450.000</div>
-<div class="item">25M : 550.000</div>
-<div class="item">30M : 650.000</div>
-
-<div class="category">👁️ KEN HAKI (Instinct)</div>
-<div class="item">0–1000 : 5.000</div>
-<div class="item">1000–2000 : 9.000</div>
-<div class="item">2000–5000(MAX)+V2 : 13.000</div>
-<div class="item">0–5000(MAX)+V2 : 20.000</div>
-<div class="item">Misi V2 : 5.000</div>
-
-<div class="category">💸 JOKI BELLY</div>
-<div class="item">1M : 5.000</div>
-<div class="item">3M : 10.000</div>
-<div class="item">10M : 20.000</div>
-
-<div class="category">🔮 JOKI FRAGMENT</div>
-<div class="item">1K : 1.000</div>
-<div class="item">5K : 4.000</div>
-<div class="item">10K : 8.000</div>
-<div class="item">20K : 15.000</div>
-
-<div class="category">🔥 JOKI LEVEL</div>
-<div class="item">1–700 : 15.000</div>
-<div class="item">700–1500 : 15.000</div>
-<div class="item">1500–MAX : 20.000</div>
-
-<div class="category">🌊 UNLOCK SEA</div>
-<div class="item">Sea 2 / 3 : 10.000</div>
-
-<div class="category">⚔️ MASTERY</div>
-<div class="item">Fruit / Sword / FS / Gun : 5.000 / 100 Mas</div>
-
-<div class="category">💥 RAID</div>
-<div class="item">Raid Biasa : 5.000</div>
-<div class="item">Raid Buddha : 10.000</div>
-<div class="item">Raid Dough : 10.000</div>
-
-<div class="category">👑 BOSS & RARE ITEM</div>
-<div class="item">Leviathan / Hydra / Tiki : 35.000</div>
-<div class="item">Dough King : 10.000</div>
-<div class="item">Rip Indra : 10.000</div>
-<div class="item">CDK : 20.000</div>
-<div class="item">God Human : 30.000</div>
-<div class="item">TTK : 30.000</div>
-<div class="item">Dragon Heart : 30.000</div>
-<div class="item">Dragon Storm : 30.000</div>
-
-<div class="category">📩 NOTE</div>
-<div class="item">Selama proses joki akun TIDAK BOLEH LOGIN</div>
-  </div>
+<!-- LIST KANAN -->
+<div class="list">
+<h3>LIST JOKI</h3>
+<ul>
+<li>Rank Push</li>
+<li>Classic</li>
+<li>All Hero</li>
+<li>Win Rate</li>
+</ul>
 </div>
 
-<!-- MODAL KONFIRMASI -->
-<div id="modal">
-  <div class="modal-content">
-    <div class="checkmark">✔️</div>
-    <p>Pesanan telah dibuat!</p>
-    <p style="margin-top:10px; font-size:14px; color:#a0e7ff;">
-      Tunggu informasi selanjutnya. Kalau joki sudah selesai, pihak kami akan menghubungi kamu melalui chat.
-    </p>
-  </div>
+<!-- FORM KIRI -->
+<div class="form">
+<form action="https://formspree.io/f/xojdwvkb" method="POST" enctype="multipart/form-data">
+
+<input type="text" name="nickname" placeholder="Nickname" required>
+<input type="text" name="id_game" placeholder="ID Game" required>
+
+<label>JENIS JOKI</label>
+<select name="jenis_joki">
+  <option>Mau joki apa boy?</option>
+  <option>Rank</option>
+  <option>Classic</option>
+  <option>All Hero</option>
+</select>
+
+<div class="btn">PAYMENT : DANA / OVO / GOPAY / QRIS</div>
+
+<label>Masukin bukti TF ke sini boy</label>
+<input type="file" name="bukti_tf" required>
+
+<a class="btn"
+href="https://wa.me/6289692310378?text=Halo%20Admin,%20minta%20QRIS%20dong"
+target="_blank">
+Minta QRIS ke Admin
+</a>
+
+<button class="btn" type="submit" onclick="success()">ORDER</button>
+
+</form>
+</div>
+</div>
+
+<!-- SLIDE SUKSES -->
+<div id="success">
+<div class="check">✔</div>
+<h2>Pesanan telah dibuat</h2>
+<p>Tunggu informasi selanjutnya, kalau jokian sudah selesai nanti di chat oleh pihak kami</p>
+</div>
+
 </div>
 
 <script>
-const form = document.getElementById('orderForm');
-const modal = document.getElementById('modal');
-
-form.addEventListener('submit', function(e){
-  e.preventDefault(); // hentikan submit default
-
-  // Tampilkan modal
-  modal.style.display = 'flex';
-
-  // Submit form ke Formspree dengan fetch
-  const action = 'https://formspree.io/f/xojdwvkb';
-  const formData = new FormData(form);
-  fetch(action, {
-    method: 'POST',
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  }).then(response => console.log('Form submitted!'))
-    .catch(error => console.error('Error!', error));
-
-  // Hide modal setelah 3 detik dan reset form
-  setTimeout(()=>{ modal.style.display='none'; form.reset(); }, 3000);
-});
+function success(){
+  setTimeout(()=>{
+    document.getElementById("orderPage").style.display="none";
+    document.getElementById("success").style.display="block";
+  },500);
+}
 </script>
 
 </body>
-
 </html>
