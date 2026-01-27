@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Joki</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#020617;
+  color:white;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
+
+/* DESKTOP LAYOUT */
+.wrapper{
+  display:flex;
+  gap:20px;
+}
+
+@media(max-width:768px){
+  .wrapper{
+    flex-direction:column;
+  }
+}
+
+.list{
+  width:30%;
+  background:#020617;
+  border:1px solid #2563eb;
+  border-radius:12px;
+  padding:15px;
+}
+
+.list h3{
+  text-align:center;
+}
+
+.form{
+  width:70%;
+  background:#020617;
+  border:1px solid #2563eb;
+  border-radius:12px;
+  padding:20px;
+}
+
+/* BUTTON STYLE */
+.btn{
+  width:100%;
+  padding:14px;
+  margin-top:12px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+  text-align:center;
+  background:linear-gradient(135deg,#2563eb,#020617);
+  color:#fff;
+  box-shadow:0 0 15px rgba(37,99,235,.5);
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 25px rgba(37,99,235,.9);
+}
+
+/* INPUT */
+input,select{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:8px;
+  border:none;
+}
+
+/* SUCCESS SLIDE */
+#success{
+  display:none;
+  text-align:center;
+  margin-top:50px;
+}
+
+.check{
+  font-size:80px;
+  color:#22c55e;
+  animation:pop .5s ease;
+}
+
+@keyframes pop{
+  0%{transform:scale(0)}
+  100%{transform:scale(1)}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="wrapper" id="orderPage">
+
+<!-- LIST KANAN -->
+<div class="list">
+<h3>LIST JOKI</h3>
+<ul>
+<li>Rank Push</li>
+<li>Classic</li>
+<li>All Hero</li>
+<li>Win Rate</li>
+</ul>
+</div>
+
+<!-- FORM KIRI -->
+<div class="form">
+<form action="https://formspree.io/f/xojdwvkb" method="POST" enctype="multipart/form-data">
+
+<input type="text" name="nickname" placeholder="Nickname" required>
+<input type="text" name="id_game" placeholder="ID Game" required>
+
+<label>JENIS JOKI</label>
+<select name="jenis_joki">
+  <option>Mau joki apa boy?</option>
+  <option>Rank</option>
+  <option>Classic</option>
+  <option>All Hero</option>
+</select>
+
+<div class="btn">PAYMENT : DANA / OVO / GOPAY / QRIS</div>
+
+<label>Masukin bukti TF ke sini boy</label>
+<input type="file" name="bukti_tf" required>
+
+<a class="btn"
+href="https://wa.me/6289692310378?text=Halo%20Admin,%20minta%20QRIS%20dong"
+target="_blank">
+Minta QRIS ke Admin
+</a>
+
+<button class="btn" type="submit" onclick="success()">ORDER</button>
+
+</form>
+</div>
+</div>
+
+<!-- SLIDE SUKSES -->
+<div id="success">
+<div class="check">✔</div>
+<h2>Pesanan telah dibuat</h2>
+<p>Tunggu informasi selanjutnya, kalau jokian sudah selesai nanti di chat oleh pihak kami</p>
+</div>
+
+</div>
+
+<script>
+function success(){
+  setTimeout(()=>{
+    document.getElementById("orderPage").style.display="none";
+    document.getElementById("success").style.display="block";
+  },500);
+}
+</script>
+
+</body>
+</html>
