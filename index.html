@@ -627,7 +627,7 @@
 
     <!-- ==================== FIREBASE & LOGIKA APLIKASI ==================== -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js";
         import { 
             getAuth, 
             signInWithCustomToken, 
@@ -637,7 +637,7 @@
             updateProfile,
             signOut,
             onAuthStateChanged 
-        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        } from "https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js";
         import { 
             getFirestore, 
             collection, 
@@ -647,7 +647,7 @@
             deleteDoc, 
             onSnapshot,
             serverTimestamp 
-        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        } from "https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js";
 
         // Konfigurasi Environment Firebase
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'dompetcloud-app-id';
