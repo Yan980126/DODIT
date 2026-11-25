@@ -651,9 +651,16 @@
 
         // Konfigurasi Environment Firebase
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'dompetcloud-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        const firebaseConfig = {
+         apiKey: "AIzaSyAAPcaf8SpYzktjy3Vy_EZBYldWnrYYt18",
+         authDomain: "dodit-20ab0.firebaseapp.com",
+         projectId: "dodit-20ab0",
+         storageBucket: "dodit-20ab0.firebasestorage.app",
+         messagingSenderId: "177936646756",
+         appId: "1:177936646756:web:fef07ad4b341949dda1571",
+         measurementId: "G-XMGW02TP6R"
+};
 
-        let app, auth, db;
         let currentUser = null;
         let unsubTransactions = null;
         let unsubNotes = null;
