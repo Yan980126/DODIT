@@ -813,11 +813,7 @@
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                     await signInWithCustomToken(auth, __initial_auth_token);
                 }
-            } catch (err) {
-                console.error('Firebase Init Error:', err);
-                setLoading(false);
-                showToast('Gagal menghubungkan ke server cloud.', 'error');
-            }
+            } 
         }
 
         function setupUserUI(user) {
