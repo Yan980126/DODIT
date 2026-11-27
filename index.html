@@ -661,7 +661,8 @@
          appId: "1:177936646756:web:fef07ad4b341949dda1571",
          measurementId: "G-XMGW02TP6R"
 };
-         
+
+        let app, auth, db;
         let currentUser = null;
         let unsubTransactions = null;
         let unsubNotes = null;
@@ -781,18 +782,11 @@
 
         // ==================== INISIALISASI FIREBASE & AUTH ====================
         async function initFirebase() {
-            if (!firebaseConfig) {
-                setLoading(false);
-                showToast('Konfigurasi Cloud tidak ditemukan.', 'error');
-                return;
-            }
-
             try {
-                if (!app) {
-                    app = initializeApp(firebaseConfig);
-                }
-                auth = auth || getAuth(app);
-                db = db || getFirestore(app);
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
                 // Dengarkan perubahan status login
                 onAuthStateChanged(auth, (user) => {
                     currentUser = user;
@@ -811,7 +805,10 @@
                 });
 
                 // Cek apakah ada custom token awal dari environment
-               catch (err) {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                }
+            } catch (err) {
                 console.error('Firebase Init Error:', err);
                 setLoading(false);
                 showToast('Error: ' + (err.code || err.message), 'error');
