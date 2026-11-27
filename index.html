@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DompetCloud - Keuangan & Catatan Multi-Perangkat</title>
+    <title>DompetDigital - Keuangan & Catatan Multi-Perangkat</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -87,7 +87,7 @@
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-500 text-white shadow-lg shadow-brand-500/30 mb-4">
                 <i data-lucide="wallet" class="w-8 h-8"></i>
             </div>
-            <h1 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">DompetCloud</h1>
+            <h1 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">DompetDigital</h1>
             <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Catat keuangan, tabungan & catatan harian tersinkronisasi di semua HP Anda.</p>
         </div>
 
@@ -168,7 +168,7 @@
                             Sync
                         </span>
                     </div>
-                    <p id="headerUserEmail" class="text-[11px] text-slate-500 dark:text-slate-400 truncate max-w-[180px]">cloud@dompet.id</p>
+                    <p id="headerUserEmail" class="text-[11px] text-slate-500 dark:text-slate-400 truncate max-w-[180px]">cloud@DODIT.id</p>
                 </div>
             </div>
 
@@ -627,7 +627,7 @@
 
     <!-- ==================== FIREBASE & LOGIKA APLIKASI ==================== -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { 
             getAuth, 
             signInWithCustomToken, 
@@ -637,7 +637,7 @@
             updateProfile,
             signOut,
             onAuthStateChanged 
-        } from "https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js";
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { 
             getFirestore, 
             collection, 
@@ -647,10 +647,11 @@
             deleteDoc, 
             onSnapshot,
             serverTimestamp 
-        } from "https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js";
+        } 
+        from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Konfigurasi Environment Firebase
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'dompetcloud-app-id';
+        const appId = 'DODIT-app-id';
         const firebaseConfig = {
          apiKey: "AIzaSyAAPcaf8SpYzktjy3Vy_EZBYldWnrYYt18",
          authDomain: "dodit-20ab0.firebaseapp.com",
@@ -660,11 +661,20 @@
          appId: "1:177936646756:web:fef07ad4b341949dda1571",
          measurementId: "G-XMGW02TP6R"
 };
-
+         
         let currentUser = null;
         let unsubTransactions = null;
         let unsubNotes = null;
         let unsubGoals = null;
+
+        try {
+            app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+        } catch (error) {
+            console.error("Gagal inisialisasi Firebase:", error);
+            alert("Gagal terhubung ke Firebase: " + error.message);
+        }
 
         // State Aplikasi
         const state = {
