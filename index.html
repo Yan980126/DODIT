@@ -788,10 +788,11 @@
             }
 
             try {
-                app = initializeApp(firebaseConfig);
-                auth = getAuth(app);
-                db = getFirestore(app);
-
+                if (!app) {
+                    app = initializeApp(firebaseConfig);
+                }
+                auth = auth || getAuth(app);
+                db = db || getFirestore(app);
                 // Dengarkan perubahan status login
                 onAuthStateChanged(auth, (user) => {
                     currentUser = user;
@@ -810,8 +811,11 @@
                 });
 
                 // Cek apakah ada custom token awal dari environment
-                
-            } 
+               catch (err) {
+                console.error('Firebase Init Error:', err);
+                setLoading(false);
+                showToast('Error: ' + (err.code || err.message), 'error');
+            }
         }
 
         function setupUserUI(user) {
